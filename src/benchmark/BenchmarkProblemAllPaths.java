@@ -46,12 +46,14 @@ public class BenchmarkProblemAllPaths extends BenchmarkProblem {
 
     @Override
     public long getResult() {
-        try {
-            printAllPaths("AllPaths.txt");
-        } catch (FileNotFoundException e) {
-            throw new RuntimeException(e);
-        }
-        return parseResults.size();
+        if (parseResults != null) {
+		try {
+		    printAllPaths("AllPaths.txt");
+		} catch (FileNotFoundException e) {
+		    throw new RuntimeException(e);
+		}
+		return parseResults.size();
+	} else return 0;
     }
 
     @Override
